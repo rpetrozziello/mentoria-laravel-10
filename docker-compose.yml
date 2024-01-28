@@ -23,20 +23,20 @@ services:
             - ./docker/nginx/:/etc/nginx/conf.d/
         networks:
             - sistema-getao-network
+
      # db mysql ${DB_DATABASE} //Busca do arquivo .env
     mysql:
         container_name: banco-mysql
         image: mysql:5.7.22
         restart: unless-stopped
         environment:
-            MYSQL_DATABASE: ${DB_DATABASE}
-            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-            MYSQL_PASSWORD: ${DB_PASSWORD}
-            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_DATABASE: sistema_gestao
+            MYSQL_PASSWORD: root
+            MYSQL_USER: root
         volumes:
             - ./.docker/mysql/dbdata:/var/lib/mysql
         ports:
-            - "3388:3306"
+            - "3306:3306"
         networks:
             - sistema-getao-network
 
